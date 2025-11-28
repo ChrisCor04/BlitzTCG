@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - TCG Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="ribbon">
+    <div class="container">
+      <div class="brand">TCG Tracker</div>
+      <nav class="nav">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#help">Help</a>
+        <a href="index.html#login">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="screen" style="display:block;">
+      <h1>Sign Up</h1>
+      <form class="auth-form" id="signupForm"action="#" onsubmit="return false;">
+        <label>Full name
+          <input type="text" name="name" id="signupName"placeholder="Your name" />
+        </label>
+
+        <label>Email
+          <input type="email" id="signupEmail"name="email" placeholder="you@example.com" />
+        </label>
+
+        <label>Password
+          <input type="password" name="password" id="signupPassword" placeholder="Create a password" />
+        </label>
+
+        <label>Confirm Password
+          <input type="password" name="password2" id="signupPassword2"placeholder="Confirm password" />
+        </label>
+
+        <div class="form-actions">
+          <button class="btn" type="submit" id="submit">Sign up</button>
+          <a class="btn ghost" href="index.html#login">Back to Login</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© TCG Tracker</div>
+  </footer>
+  <script src="script.js"></script>
+
+</body>
+</html>
