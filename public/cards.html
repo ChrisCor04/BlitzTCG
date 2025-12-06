@@ -4,176 +4,266 @@
   <meta charset="UTF-8" />
   <title>Card Collection</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #0f172a;
-      color: #e5e7eb;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      padding: 40px;
-    }
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+  }
 
-    .app {
-      display: flex;
-      gap: 32px;
-      width: 100%;
-      max-width: 1400px;
-      min-height: 80vh;
-    }
+  .app {
+    display: flex;
+    gap: 32px;
+    width: 100%;
+    max-width: 1400px;
+    min-height: 80vh;
+  }
 
-    .panel {
-      background: #020617;
-      border-radius: 20px;
-      padding: 28px 32px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      border: 1px solid #1f2937;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-    }
+  .panel {
+    background: #020617;
+    border-radius: 20px;
+    padding: 28px 32px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid #1f2937;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .panel h2 {
-      font-size: 1.6rem;
-      margin-bottom: 20px;
-    }
+  .panel h2 {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
 
-    .chart-panel {
-      flex: 0 0 45%;
-    }
+  .chart-panel {
+    flex: 0 0 45%;
+  }
 
-    .chart-container {
-      width: 100%;
-      height: 420px;
-      background: radial-gradient(circle at top left, #1d4ed8 0, #020617 55%);
-      border-radius: 16px;
-      padding: 12px;
-    }
+  .chart-container {
+    width: 100%;
+    height: 420px;
+    background: radial-gradient(circle at top left, #1d4ed8 0, #020617 55%);
+    border-radius: 16px;
+    padding: 12px;
+  }
 
-    canvas {
-      width: 100%;
-      height: 100%;
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: 12px;
-    }
+  canvas {
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 12px;
+  }
 
-    .chart-caption {
-      margin-top: 14px;
-      font-size: 1rem;
-      color: #9ca3af;
-    }
+  .chart-caption {
+    margin-top: 14px;
+    font-size: 1rem;
+    color: #9ca3af;
+  }
 
-    .list-panel {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-    }
+  .list-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
 
-    .card-input-bar {
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      background: rgba(15, 23, 42, 0.85);
-      border-radius: 12px;
-      padding: 16px 20px;
-      border: 1px solid #1f2937;
-    }
+  .card-input-bar {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    background: rgba(15, 23, 42, 0.85);
+    border-radius: 12px;
+    padding: 16px 20px;
+    border: 1px solid #1f2937;
+  }
 
-    .card-input-bar label {
-      font-size: 1.1rem;
-      color: #cbd5e1;
-    }
+  .card-input-bar label {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+  }
 
-    .card-input-bar input {
-      flex: 1;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid #1f2937;
-      background: #020617;
-      color: #e5e7eb;
-      font-size: 1rem;
-      outline: none;
-    }
+  .card-input-bar input {
+    flex: 1;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid #1f2937;
+    background: #020617;
+    color: #e5e7eb;
+    font-size: 1rem;
+    outline: none;
+  }
 
-    .card-input-bar input:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 1px #3b82f6;
-    }
+  .card-input-bar input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 1px #3b82f6;
+  }
 
-    .card-input-bar button {
-      padding: 12px 18px;
-      border-radius: 10px;
-      background: #3b82f6;
-      border: none;
-      color: white;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
-    }
+  .card-input-bar button {
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: #3b82f6;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+  }
 
-    .card-input-bar button:hover {
-      filter: brightness(1.1);
-    }
+  .card-input-bar button:hover {
+    filter: brightness(1.1);
+  }
 
-    .table-wrapper {
-      border-radius: 14px;
-      border: 1px solid #1f2937;
-      background: rgba(15, 23, 42, 0.75);
-      max-height: 450px;
-      overflow-y: auto;
-    }
+  .table-wrapper {
+    border-radius: 14px;
+    border: 1px solid #1f2937;
+    background: rgba(15, 23, 42, 0.75);
+    max-height: 625px;
+    overflow-y: auto;
+  }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 1.05rem;
-    }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.05rem;
+  }
 
-    th, td {
-      padding: 14px 16px;
-    }
+  th, td {
+    padding: 14px 16px;
+  }
 
-    th {
-      background: rgba(15, 23, 42, 0.9);
-      color: #9ca3af;
-      font-size: 1rem;
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
+  th {
+    background: rgba(15, 23, 42, 0.9);
+    color: #9ca3af;
+    font-size: 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
 
-    tbody tr:nth-child(even) {
-      background: rgba(15, 23, 42, 0.9);
-    }
+  tbody tr:nth-child(even) {
+    background: rgba(15, 23, 42, 0.9);
+  }
 
-    .card-image {
-      width: 70px;
-      height: 100px;
-      border-radius: 10px;
-      object-fit: cover;
-    }
+  .card-image {
+    width: 70px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
 
-    .empty-state {
-      text-align: center;
-      padding: 30px;
-      color: #6b7280;
-      font-size: 1rem;
-    }
+  .empty-state {
+    text-align: center;
+    padding: 30px;
+    color: #6b7280;
+    font-size: 1rem;
+  }
 
-  </style>
+  /* ===== Modal Layout (for card / variant picker) ===== */
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+  }
+
+  .modal-overlay.hidden {
+    display: none;
+  }
+
+  .modal {
+    background: #020617;
+    border-radius: 16px;
+    border: 1px solid #1f2937;
+    padding: 20px 24px;
+    max-width: 640px;
+    width: calc(100% - 40px);
+    max-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
+  .modal-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .modal-close {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    font-size: 1.6rem;
+    cursor: pointer;
+  }
+
+  .modal-list {
+    overflow-y: auto;
+    padding-right: 6px;
+  }
+
+  .modal-card-option {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #1f2937;
+    background: rgba(15, 23, 42, 0.9);
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.12s ease, border-color 0.12s ease, transform 0.08s ease;
+  }
+
+  .modal-card-option:hover {
+    background: rgba(37, 99, 235, 0.18);
+    border-color: #3b82f6;
+    transform: translateY(-1px);
+  }
+
+  .modal-card-title {
+    font-weight: 600;
+    color: #e5e7eb;
+  }
+
+  .modal-card-meta {
+    font-size: 0.9rem;
+    color: #9ca3af;
+  }
+
+  .modal-card-extra {
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+</style>
 </head>
 <body>
   <main class="app">
 
     <section class="panel chart-panel">
       <h2>Collection Averages</h2>
+
+      <div id="totalValue" style="margin-top: 10px; font-size: 1.2rem; color: #3b82f6;">
+        Total Collection Value: $0.00
+      </div>
 
       <div class="chart-container">
         <canvas id="collectionLineChart"></canvas>
@@ -213,7 +303,18 @@
     </section>
 
   </main>
-
+ <!-- Card selection modal -->
+  <div id="cardSelectOverlay" class="modal-overlay hidden">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="cardSelectTitle">Select a card</h3>
+        <button id="cardSelectClose" class="modal-close">&times;</button>
+      </div>
+      <div id="cardSelectList" class="modal-list">
+        <!-- Cards will be injected here -->
+      </div>
+    </div>
+  </div>
   <script type="module" src="marketscan.js"></script>
 </body>
 </html>
