@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg,  #00a2ff 0%, #7701ff 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -20,7 +20,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg,  #00a2ff 0%, #7701ff 100%);
     transition: opacity 0.3s ease;
 }
 
@@ -86,13 +86,13 @@ body {
 
 .form-group input:focus {
     outline: none;
-    border-color: #667eea;
+    border-color:#00a2ff 0%;
 }
 
 .btn-primary {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg,  #00a2ff 0%, #7701ff 100%);
     color: white;
     border: none;
     border-radius: 5px;
@@ -126,6 +126,102 @@ body {
 
 .toggle-text a:hover {
     text-decoration: underline;
+}
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.screen1 {
+  height: 70vh;
+  background: white;
+  border: black 1px solid;
+  border-radius: 10px;
+  opacity: 0;
+  animation: slideUp 0.6s ease-out both;
+  animation-delay: 0.2s;
+}
+.screen1:nth-child(2) { animation-delay: 0.3s; }
+.screen1:nth-child(3) { animation-delay: 0.4s; }
+.screen-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+@media (max-width: 900px) {
+  .screen-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.screen1 h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+}
+
+.screen1 h2 {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  margin-left: 10px;
+}
+
+.screen1 p,
+.screen1 li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-left: 10px;
+}
+.hero {
+  padding: 80px 60px;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 60px;
+}
+
+/* LEFT TEXT */
+.hero-text h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* RIGHT IMAGE PLACEHOLDER */
+.hero-image {
+  height: 300px;
+  border: 2px solid #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-image {
+    height: 250px;
+  }
 }
 
 /* Dashboard Styles */
@@ -289,15 +385,29 @@ body {
 
 /* ---------- Top ribbon / nav ---------- */
 .ribbon {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 10;
+  width: 100%;
+  padding: 15px 30px;   /* ↑ top/bottom | ← left/right */
+  background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
 }
-
+.ribbon .container {
+  max-width: none;      
+  width: 100%;
+  padding: 0 20px;      
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav a {
+  padding: 10px 18px;
+  margin-left: 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #ffffff, #f3f3f3);
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
 .container {
     max-width: 1100px;
     margin: 0 auto;
@@ -402,7 +512,7 @@ body {
     font-size: 14px;
     text-align: center;
     text-decoration: none;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #00a2ff 0%, #7701ff 100%);
     color: #ffffff;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
     display: inline-block;
