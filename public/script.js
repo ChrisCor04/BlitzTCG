@@ -26,7 +26,6 @@ if (loginButton && emailInput && passwordInput) {
       const data = await res.json();
 
       if (res.ok) {
-        // ✅ Store user identity for marketscan.js
         localStorage.setItem('userEmail', data.email || email);
         if (data.name) {
           localStorage.setItem('userName', data.name);
