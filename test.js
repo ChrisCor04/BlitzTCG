@@ -7,7 +7,6 @@ const sql = postgres(connectionString)
 export default sql
 export async function getUsers(){
     const users = await sql`SELECT * FROM userlogininfo`;
-    console.log(users);
     return users;
 }
 
@@ -22,6 +21,3 @@ export async function createuser(name, email, password) {
     throw err;
   }
 }
-
-
-getUsers();
