@@ -17,6 +17,7 @@
     "dotenv": "^16.4.5",
     "express": "^5.1.0",
     "mysql2": "^3.15.3",
+    "node-fetch": "^3.3.2",
     "postgres": "^3.4.7"
   },
   "devDependencies": {
