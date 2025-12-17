@@ -11,6 +11,8 @@ const cardSelectTitle = document.getElementById("cardSelectTitle");
 const cardSelectList = document.getElementById("cardSelectList");
 const cardSelectClose = document.getElementById("cardSelectClose");
 
+let collectionChart; // Global chart instance
+
 addCardButton.addEventListener("click", async () => {
   const userQuery = cardInput.value.trim();
 
@@ -107,6 +109,9 @@ function updateTotalValue() {
   if (totalDiv) {
     totalDiv.textContent = `Total Collection Value: $${total.toFixed(2)}`;
   }
+
+  // Update chart with new total
+  updateChart(total);
 }
 
 // Decide if we can auto-pick a card or show the modal
@@ -453,4 +458,117 @@ window.addEventListener("DOMContentLoaded", () => {
   saved.forEach((item) => restoreCardToTable(item));
   updateTotalValue();
 
+  // Initialize the chart
+  initializeChart();
 });
+
+// Function to initialize the line chart
+function initializeChart() {
+  const ctx = document.getElementById('collectionLineChart').getContext('2d');
+  
+  // Get historical data from localStorage
+  const email = localStorage.getItem("userEmail");
+  const historyKey = `priceHistory_${email}`;
+  let history = JSON.parse(localStorage.getItem(historyKey)) || [];
+  
+  // Ensure we have 7 days
+  const now = new Date();
+  const labels = [];
+  const data = [];
+  
+  for (let i = 6; i >= 0; i--) {
+    const date = new Date(now);
+    date.setDate(now.getDate() - i);
+    const dateStr = date.toISOString().split('T')[0]; // YYYY-MM-DD
+    labels.push(date.toLocaleDateString());
+    
+    const entry = history.find(h => h.date === dateStr);
+    data.push(entry ? entry.total : 0);
+  }
+  
+  collectionChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Total Collection Value ($)',
+        data: data,
+        borderColor: '#3b82f6',
+        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+        tension: 0.4,
+        fill: true
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)'
+          },
+          ticks: {
+            color: '#e5e7eb'
+          }
+        },
+        x: {
+          grid: {
+            color: 'rgba(255, 255, 255, 0.1)'
+          },
+          ticks: {
+            color: '#e5e7eb'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            color: '#e5e7eb'
+          }
+        }
+      }
+    }
+  });
+}
+
+// Function to update the chart with new total value
+function updateChart(newTotal) {
+  if (!collectionChart) return;
+  
+  // Save today's total
+  const email = localStorage.getItem("userEmail");
+  if (!email) return;
+  
+  const historyKey = `priceHistory_${email}`;
+  let history = JSON.parse(localStorage.getItem(historyKey)) || [];
+  
+  const today = new Date().toISOString().split('T')[0];
+  const existing = history.find(h => h.date === today);
+  if (existing) {
+    existing.total = newTotal;
+  } else {
+    history.push({ date: today, total: newTotal });
+  }
+  
+  // Keep only last 7 days
+  history = history.filter(h => {
+    const d = new Date(h.date);
+    const diff = (new Date() - d) / (1000 * 60 * 60 * 24);
+    return diff <= 7;
+  });
+  
+  localStorage.setItem(historyKey, JSON.stringify(history));
+  
+  // Update chart data
+  const now = new Date();
+  for (let i = 0; i < 7; i++) {
+    const date = new Date(now);
+    date.setDate(now.getDate() - (6 - i));
+    const dateStr = date.toISOString().split('T')[0];
+    const entry = history.find(h => h.date === dateStr);
+    collectionChart.data.datasets[0].data[i] = entry ? entry.total : 0;
+  }
+  
+  collectionChart.update();
+}
