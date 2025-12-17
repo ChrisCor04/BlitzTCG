@@ -221,9 +221,12 @@ app.use((err, req, res, next) => {
 // =======================
 app.listen(process.env.PORT || 3000, () => {
     console.log(`Server is running on port ${process.env.PORT || 3000}`);
-    // Log memory usage every 30 seconds
+    // Log memory usage only if high
     setInterval(() => {
         const mem = process.memoryUsage();
-        console.log(`Memory: RSS=${Math.round(mem.rss / 1024 / 1024)}MB, Heap=${Math.round(mem.heapUsed / 1024 / 1024)}MB`);
-    }, 30000);
+        const heapMB = Math.round(mem.heapUsed / 1024 / 1024);
+        if (heapMB > 400) { // Log only if over 400MB
+            console.log(`High memory: RSS=${Math.round(mem.rss / 1024 / 1024)}MB, Heap=${heapMB}MB`);
+        }
+    }, 10000); // Check every 10 seconds
 });
