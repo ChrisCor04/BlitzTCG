@@ -219,6 +219,11 @@ app.use((err, req, res, next) => {
 // =======================
 // Start Server
 // =======================
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server is running on port ${process.env.PORT || 3000}`);
+    // Log memory usage every 30 seconds
+    setInterval(() => {
+        const mem = process.memoryUsage();
+        console.log(`Memory: RSS=${Math.round(mem.rss / 1024 / 1024)}MB, Heap=${Math.round(mem.heapUsed / 1024 / 1024)}MB`);
+    }, 30000);
 });
