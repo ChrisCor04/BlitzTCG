@@ -1,37 +1,32 @@
 # BlitzTCG
 
-A full-stack trading card portfolio tracking platform that allows users to monitor their collections, track card values, and visualize portfolio performance over time.
+A trading card portfolio tracking platform that enables collectors and players to manage collections, monitor card values, and visualize portfolio performance through real-time market data.
 
 ## Overview
 
-BlitzTCG was created to help trading card players and collectors manage their collections in a centralized platform. Users can create accounts, add cards to personalized portfolios, track collection values, and view visualizations of portfolio performance using real-time pricing data.
+BlitzTCG was created to help trading card enthusiasts track the value of their collections in a single platform. Users can create accounts, build personalized portfolios, add or remove cards, and monitor collection performance through interactive visualizations powered by current market pricing data.
 
 ## Features
 
 * User registration and authentication
-* Personalized trading card portfolios
-* Add and remove cards from collections
+* Personalized card portfolios
+* Collection management
+* Add and remove tracked cards
 * Real-time card valuation data
-* Portfolio value tracking
-* Collection performance visualizations
+* Portfolio performance visualization
 * Responsive web interface
 
 ## Technology Stack
 
 ### Frontend
 
+* JavaScript
 * HTML
 * CSS
-* JavaScript
 
 ### Backend
 
-* Python
-* Flask
-
-### Database
-
-* SQL
+* JavaScript
 
 ### APIs
 
@@ -47,53 +42,43 @@ BlitzTCG was created to help trading card players and collectors manage their co
 1. Users create an account and log in.
 2. Cards can be added to a personalized portfolio.
 3. BlitzTCG retrieves current market pricing information from external APIs.
-4. Portfolio values are automatically calculated.
-5. Interactive visualizations display portfolio growth and collection performance.
+4. Portfolio values are automatically calculated and updated.
+5. Interactive charts display collection performance and overall portfolio value.
 
 ## Key Functionality
 
-### Account Management
+### Authentication System
 
-Secure authentication system supporting user registration and login functionality.
+Implemented secure account registration and login functionality to support personalized user experiences.
 
-### Portfolio Tracking
+### Portfolio Management
 
-Users can build and manage personalized card portfolios by adding and removing cards.
+Users can build and manage custom card portfolios by adding and removing tracked cards.
 
-### Market Valuation
+### Market Tracking
 
-External pricing APIs provide up-to-date valuation data for tracked cards.
+Integrated external pricing APIs to provide up-to-date card valuation data.
 
 ### Data Visualization
 
-Portfolio analytics display collection value trends and overall portfolio performance.
+Developed portfolio analytics and visualizations to help users monitor collection growth and performance.
 
 ## Project Highlights
 
-* Developed a full-stack web application using Python and Flask.
-* Implemented authentication and user account management.
-* Integrated external APIs for market pricing data.
-* Built portfolio tracking functionality for personalized collections.
-* Designed interactive visualizations for collection analytics.
+* Engineered a full-stack trading card portfolio tracking application.
+* Implemented user authentication and account management features.
+* Integrated third-party APIs for market pricing and card information.
+* Built portfolio tracking and collection management functionality.
+* Developed visualizations for portfolio valuation and performance analysis.
 * Deployed a publicly accessible web application.
 
 ## Future Improvements
 
-* Collection import and export tools
-* Price alert notifications
-* Historical pricing analysis
-* Multi-game trading card support
-* Collection sharing between users
-* Mobile application support
-
-## Installation
-
-```bash
-git clone https://github.com/ChrisCor04/TCG-CardTrackerAvgP.git
-cd TCG-CardTrackerAvgP
-pip install -r requirements.txt
-python app.py
-```
+* Historical price tracking
+* Collection import/export tools
+* Price change notifications
+* Mobile-friendly redesign
+* Support for additional trading card games
 
 ## Author
 
@@ -102,3 +87,4 @@ Christopher Cordoba
 Computer Science Student at Arizona State University
 
 GitHub: https://github.com/ChrisCor04
+
